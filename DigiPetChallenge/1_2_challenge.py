@@ -25,7 +25,6 @@
 """
 
 is_active = True
-
 # add menu items #
 
 digipet = {
