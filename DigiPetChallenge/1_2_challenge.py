@@ -44,41 +44,63 @@ while is_active:
         continue
 
     command = input("\ncommand-> ")
+    if digipet['Friendship:'] == 100:
+        print(f"Congrats! {digipet['Name:']}'s friendship is 100. \n They really like you. \n Great work!")
 
-    if command == "stats":
-        for i in digipet.items():
-            print(i)
-        
-
-    elif command == "menu":
+    if command == "menu":
         print('----------')
         for i in menu:
             print(i)
     
 # Digipet Commands
+            
+# WALKIES
     elif command == "walk":
         digipet['Friendship:'] += 1
         digipet['Energy:'] -= 10
         if digipet["Health:"] < 100:
             digipet["Health:"] +=10
         print(f"You take {digipet['Name:']} for a walk.\n {digipet['Name:']}'s Energy: {digipet['Energy:']}\n {digipet['Name:']}'s Health: {digipet['Health:']}")
-
-
-
-# Secert Command
-    elif command == "kill":
-        digipet['Health:'] = 0
-        digipet['Engery:'] = 0
+# PLAY WITH ME 
     elif command == "play":
-        print(f"You play with {digipet['Name:']} for a bit.\n {digipet['Name:']}'s Energy: {digipet['Energy:'] - 10}\n {digipet['Name:']}'s friendship: {digipet['Friendship:'] + 5}")
-        
+        digipet['Friendship:'] += 5
+        digipet['Energy:'] -= 15
+        print(f"You play with {digipet['Name:']} for a bit. \n {digipet['Name:']}'s Energy:{digipet['Energy:']}")
+# FEED ME
+    elif command =='feed':
+        digipet['Friendship:'] += 5
+        if digipet['Energy:'] < 100:
+            digipet['Energy:'] += 15
+        if digipet['Health:'] < 100:
+            digipet['Health:'] + 10
+        print(f"You fed {digipet['Name:']}.\n {digipet['Name:']}'s Energy:{digipet['Energy:']}")
+# GO MII MIIS
+    elif command =='sleep':
+        digipet['Energy:'] = 100
+        print(f"{digipet['Name:']} took a nap.\n {digipet['Name:']}'s Energy:{digipet['Energy:']}")
+    elif command == 'do trick':
+        digipet['Energy:'] -= 20
+        digipet['Friendship:'] -=5
+        print(f"{digipet['Name:']} performed tricks for you.\n {digipet['Name:']}'s Energy: {digipet['Energy:']}")
+#Stats checker
+    elif command == "stats":
+        for i in digipet.items():
+            print(i)
+#Exit game
     elif command == "quit":
         is_active = False
+# Commands does not match
     else:
         print("Invalid command")
 
-
-
+# Secert Command
+    if command == "kill":
+        digipet['Health:'] = 0
+        digipet['Energy:'] = 0
+    
+    elif command == "max":
+        digipet['Friendship:'] = 100
+    
 
     # add other commands #
 
